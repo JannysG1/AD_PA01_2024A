@@ -1,8 +1,8 @@
-Ôªø// ============================================================================
-// Proyecto: AD_PA01_2024A - Sistema de Validaci√≥n "Hoy no Circula"
-// M√≥dulo: Protocolo
-// Descripci√≥n: Define las clases de comunicaci√≥n entre cliente y servidor
-// Autores: Carri√≥n D., Garrido J.
+// ============================================================================
+// Proyecto: AD_PA01_2024A - Sistema de ValidaciÛn "Hoy no Circula"
+// MÛdulo: Protocolo
+// DescripciÛn: Define las clases de comunicaciÛn entre cliente y servidor
+// Autores: CarriÛn D., Garrido J.
 // Fecha: Noviembre 2025
 // ============================================================================
 
@@ -13,14 +13,14 @@ namespace Protocolo
 {
     /// <summary>
     /// Clase que representa una solicitud desde el cliente al servidor.
-    /// Contiene el comando a ejecutar y sus par√°metros asociados.
+    /// Contiene el comando a ejecutar y sus par·metros asociados.
     /// </summary>
     public class Pedido
     {
         // Comando a ejecutar en el servidor
         public string Comando { get; set; }
 
-        // Par√°metros asociados al comando
+        // Par·metros asociados al comando
         public string[] Parametros { get; set; }
 
         /// <summary>
@@ -28,25 +28,25 @@ namespace Protocolo
         /// El formato esperado es: "COMANDO param1 param2 ..."
         /// </summary>
         /// <param name="mensaje">Mensaje recibido en formato texto</param>
-        /// <returns>Objeto Pedido con comando y par√°metros extra√≠dos</returns>
+        /// <returns>Objeto Pedido con comando y par·metros extraÌdos</returns>
         public static Pedido Procesar(string mensaje)
         {
             // Divide el mensaje por espacios
             var partes = mensaje.Split(' ');
-
+            
             return new Pedido
             {
-                // El primer elemento es el comando, convertido a may√∫sculas
+                // El primer elemento es el comando, convertido a may˙sculas
                 Comando = partes[0].ToUpper(),
-                // El resto son par√°metros
+                // El resto son par·metros
                 Parametros = partes.Skip(1).ToArray()
             };
         }
 
         /// <summary>
-        /// Convierte el objeto Pedido a su representaci√≥n en texto.
+        /// Convierte el objeto Pedido a su representaciÛn en texto.
         /// </summary>
-        /// <returns>String con el comando y par√°metros separados por espacios</returns>
+        /// <returns>String con el comando y par·metros separados por espacios</returns>
         public override string ToString()
         {
             return $"{Comando} {string.Join(" ", Parametros)}";
@@ -55,18 +55,18 @@ namespace Protocolo
 
     /// <summary>
     /// Clase que representa la respuesta del servidor al cliente.
-    /// Contiene el estado de la operaci√≥n y un mensaje asociado.
+    /// Contiene el estado de la operaciÛn y un mensaje asociado.
     /// </summary>
     public class Respuesta
     {
-        // Estado de la operaci√≥n: "OK" o "NOK"
+        // Estado de la operaciÛn: "OK" o "NOK"
         public string Estado { get; set; }
 
         // Mensaje descriptivo de la respuesta
         public string Mensaje { get; set; }
 
         /// <summary>
-        /// Convierte el objeto Respuesta a su representaci√≥n en texto.
+        /// Convierte el objeto Respuesta a su representaciÛn en texto.
         /// </summary>
         /// <returns>String con el estado y mensaje separados por espacio</returns>
         public override string ToString()
@@ -76,17 +76,17 @@ namespace Protocolo
     }
 
     /// <summary>
-    /// Clase encargada de gestionar el protocolo de comunicaci√≥n entre cliente y servidor.
+    /// Clase encargada de gestionar el protocolo de comunicaciÛn entre cliente y servidor.
     /// Integra el procesamiento de pedidos y respuestas, proporcionando una interfaz
-    /// unificada para la comunicaci√≥n.
+    /// unificada para la comunicaciÛn.
     /// </summary>
     public class Protocolo
     {
         /// <summary>
-        /// Crea un pedido a partir del comando y par√°metros especificados.
+        /// Crea un pedido a partir del comando y par·metros especificados.
         /// </summary>
         /// <param name="comando">Comando a ejecutar</param>
-        /// <param name="parametros">Par√°metros del comando</param>
+        /// <param name="parametros">Par·metros del comando</param>
         /// <returns>Objeto Pedido construido</returns>
         public Pedido CrearPedido(string comando, params string[] parametros)
         {
@@ -98,7 +98,7 @@ namespace Protocolo
         }
 
         /// <summary>
-        /// Convierte un Pedido a su representaci√≥n en bytes para transmisi√≥n.
+        /// Convierte un Pedido a su representaciÛn en bytes para transmisiÛn.
         /// </summary>
         /// <param name="pedido">Pedido a convertir</param>
         /// <returns>Array de bytes del pedido en UTF-8</returns>
@@ -108,7 +108,7 @@ namespace Protocolo
         }
 
         /// <summary>
-        /// Convierte una Respuesta a su representaci√≥n en bytes para transmisi√≥n.
+        /// Convierte una Respuesta a su representaciÛn en bytes para transmisiÛn.
         /// </summary>
         /// <param name="respuesta">Respuesta a convertir</param>
         /// <returns>Array de bytes de la respuesta en UTF-8</returns>
@@ -121,7 +121,7 @@ namespace Protocolo
         /// Convierte un array de bytes a un objeto Pedido.
         /// </summary>
         /// <param name="buffer">Buffer de bytes recibido</param>
-        /// <param name="longitud">Longitud v√°lida del buffer</param>
+        /// <param name="longitud">Longitud v·lida del buffer</param>
         /// <returns>Objeto Pedido decodificado</returns>
         public Pedido BytesAPedido(byte[] buffer, int longitud)
         {
@@ -133,13 +133,13 @@ namespace Protocolo
         /// Convierte un array de bytes a un objeto Respuesta.
         /// </summary>
         /// <param name="buffer">Buffer de bytes recibido</param>
-        /// <param name="longitud">Longitud v√°lida del buffer</param>
+        /// <param name="longitud">Longitud v·lida del buffer</param>
         /// <returns>Objeto Respuesta decodificado</returns>
         public Respuesta BytesARespuesta(byte[] buffer, int longitud)
         {
             string mensaje = System.Text.Encoding.UTF8.GetString(buffer, 0, longitud);
             var partes = mensaje.Split(' ');
-
+            
             return new Respuesta
             {
                 Estado = partes[0],
