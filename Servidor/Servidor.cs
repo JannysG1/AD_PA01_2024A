@@ -1,6 +1,6 @@
 ﻿// ************************************************************************
 // Practica 07 – Cliente/Servidor TCP con Protocolo Unificado
-// Daniel Carrión / Jannys Garrido
+// Jannys Garrido
 // Fecha de realización: 26/11/2025
 // Fecha de entrega: 03/12/2025
 //
@@ -24,15 +24,6 @@
 //   comunicación entre cliente y servidor.
 //
 // Conclusiones:
-// Daniel:
-// * La práctica permitió comprender de manera más profunda la interacción entre 
-//   cliente y servidor mediante sockets TCP, y cómo una clase centralizada 
-//   facilita la mantenibilidad y escalabilidad del sistema.
-// * El uso de Git y GitHub evidenció la importancia de una correcta gestión de 
-//   ramas, permisos y remotos para evitar conflictos y mantener un flujo de 
-//   trabajo ordenado.
-//
-// Jannys:
 // * La reorganización del código destacó la importancia de separar responsabilidades, 
 //   permitiendo que el servidor se enfoque únicamente en la comunicación y que la 
 //   lógica se encuentre unificada en la clase Protocolo.
@@ -41,15 +32,7 @@
 //   para evitar errores como el 403 o refspec inexistentes.
 //
 // Recomendaciones:
-// Daniel:
-// * Se recomienda continuar empleando arquitecturas modulares donde la lógica 
-//   principal se centralice en clases especializadas, facilitando la reutilización 
-//   del código y la corrección de errores.
-// * Se sugiere profundizar en el manejo de protocolos personalizados y en el uso 
-//   de herramientas de depuración para sockets, ya que permiten analizar con mayor 
-//   precisión la comunicación entre procesos distribuídos.
-//
-// Jannys:
+
 // * Antes de realizar un push, verificar siempre el remoto configurado con 
 //   `git remote -v`, ya que esto evita errores de permisos y asegura que los cambios 
 //   se envíen al repositorio correcto.
