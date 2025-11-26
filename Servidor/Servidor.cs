@@ -1,10 +1,64 @@
-﻿// ============================================================================
-// Proyecto: AD_PA01_2024A - Sistema de Validación "Hoy no Circula"
-// Módulo: Servidor
-// Descripción: Servidor TCP que procesa solicitudes de validación de placas
-// Autores: Carrión D., Garrido J.
-// Fecha: Noviembre 2025
-// ============================================================================
+﻿// ************************************************************************
+// Practica 07 – Cliente/Servidor TCP con Protocolo Unificado
+// Daniel Carrión / Jannys Garrido
+// Fecha de realización: 26/11/2025
+// Fecha de entrega: 03/12/2025
+//
+// Resultados:
+// * Se logró integrar una nueva clase Protocolo que centraliza toda la lógica 
+//   de procesamiento de mensajes, permitiendo que tanto el cliente como el 
+//   servidor utilicen una única estructura para interpretar operaciones, 
+//   validar datos y generar respuestas.
+// * El servidor fue corregido y reorganizado para delegar completamente la 
+//   lógica de negocio a la clase Protocolo, resolviendo errores previos en 
+//   la impresión del puerto y en el manejo de solicitudes.
+// * Se corrigieron problemas con Git y GitHub relacionados con permisos, 
+//   repositorios remotos y ramas inexistentes, logrando establecer un flujo 
+//   funcional que incluye creación de ramas, commits, push y gestión mediante 
+//   forks, garantizando la correcta subida del proyecto y sus modificaciones.
+// * El cliente fue actualizado para generar solicitudes utilizando únicamente 
+//   el método HazOperacion(), evitando el armado manual de cadenas y mejorando 
+//   la consistencia del protocolo.
+// * Se verificó el funcionamiento del contador por cliente, la validación de 
+//   placas y la asignación de indicadores de día, confirmando la correcta 
+//   comunicación entre cliente y servidor.
+//
+// Conclusiones:
+// Daniel:
+// * La práctica permitió comprender de manera más profunda la interacción entre 
+//   cliente y servidor mediante sockets TCP, y cómo una clase centralizada 
+//   facilita la mantenibilidad y escalabilidad del sistema.
+// * El uso de Git y GitHub evidenció la importancia de una correcta gestión de 
+//   ramas, permisos y remotos para evitar conflictos y mantener un flujo de 
+//   trabajo ordenado.
+//
+// Jannys:
+// * La reorganización del código destacó la importancia de separar responsabilidades, 
+//   permitiendo que el servidor se enfoque únicamente en la comunicación y que la 
+//   lógica se encuentre unificada en la clase Protocolo.
+// * Los problemas encontrados durante la subida del proyecto mostraron lo esencial 
+//   que es comprender el funcionamiento de los repositorios, forks y autenticación 
+//   para evitar errores como el 403 o refspec inexistentes.
+//
+// Recomendaciones:
+// Daniel:
+// * Se recomienda continuar empleando arquitecturas modulares donde la lógica 
+//   principal se centralice en clases especializadas, facilitando la reutilización 
+//   del código y la corrección de errores.
+// * Se sugiere profundizar en el manejo de protocolos personalizados y en el uso 
+//   de herramientas de depuración para sockets, ya que permiten analizar con mayor 
+//   precisión la comunicación entre procesos distribuídos.
+//
+// Jannys:
+// * Antes de realizar un push, verificar siempre el remoto configurado con 
+//   `git remote -v`, ya que esto evita errores de permisos y asegura que los cambios 
+//   se envíen al repositorio correcto.
+// * Mantener una nomenclatura clara y documentar adecuadamente las clases y métodos, 
+//   especialmente en aplicaciones cliente-servidor, mejora la legibilidad y facilita 
+//   que otros desarrolladores comprendan el flujo completo del protocolo.
+//
+// ************************************************************************
+
 
 using System;
 using System.Collections.Generic;
